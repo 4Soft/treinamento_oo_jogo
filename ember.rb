@@ -1,9 +1,12 @@
 require_relative 'skill.rb'
 
 class Ember < Skill
-  def use_skill(attacker, attacked)
-    attacked.hp -= 5
+  
+  def initialize
+    super("Ember")
+  end
 
-    puts "#{attacker.nick} (#{attacker.hp} hp) atacou #{attacked.nick} (#{attacked.hp} hp)."
+  def execute(attacker, attacked)
+    attacked.hp -= 5
   end
 end

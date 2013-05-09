@@ -1,11 +1,27 @@
 class Pokemon
-  attr_accessor :hp, :skills, :nick, :type
+  attr_accessor :skills, :nick, :type, :status
+  attr_reader :hp
 
   def initialize
     @hp = 0
     @skills = {}
     @nick = ""
     @type = nil
+    @status = []
+  end
+
+  def hp=(value)
+    @hp = value.floor
+  end
+
+  def add_status(stat, other)
+    @status << [stat, other]
+  end
+
+  def execute_status
+    @status.each do |stat, pokemon|
+      stat.execute(pokemon, self)
+    end
   end
 
   def add_skill(name, skill)
